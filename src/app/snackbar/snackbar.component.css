@@ -1,0 +1,11 @@
+.error {
+  color: white;
+  text-align: center;
+  font-weight: bold;
+}
+
+.info {
+  color: black;
+  text-align: center;
+  font-weight: bold;
+}

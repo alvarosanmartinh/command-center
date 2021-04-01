@@ -1,0 +1,34 @@
+<mat-card>
+  <mat-card-title>Command Zone</mat-card-title>
+  <mat-card-content>
+    <mat-form-field class="commands-input">
+      <mat-label>Commands</mat-label>
+      <textarea matInput
+                cdkTextareaAutosize
+                [(ngModel)]="commandsInput"
+                cdkAutosizeMinRows="1"
+                cdkAutosizeMaxRows="10"></textarea>
+    </mat-form-field>
+    <button mat-raised-button color="accent" (click)="validate(commandsInput)">Validate commands</button>
+    <button class="submit-btn" mat-raised-button color="primary" (click)="validateAndSubmitCommands(commandsInput)">Submit
+      commands
+    </button>
+  </mat-card-content>
+</mat-card>
+<mat-card *ngIf="parsedCommands.length > 0">
+  <mat-card-title>Processed data & commands</mat-card-title>
+  <mat-card-content >
+    <mat-chip-list>
+      <mat-chip [selectable]="false" *ngIf="topRightCoordinates" color="primary" selected>Plateau
+        size: {{topRightCoordinates}}</mat-chip>
+    </mat-chip-list>
+    <mat-list>
+      <mat-list-item *ngFor="let command of parsedCommands">
+        <mat-icon mat-list-icon>mediation</mat-icon>
+        <div mat-line>Rover at: {{command.selectedRover.toString()}}</div>
+        <div mat-line>{{command.roverInstructions}} </div>
+        <div mat-line>Rover status: {{command.finalRoverStatus.toString()}} </div>
+      </mat-list-item>
+    </mat-list>
+  </mat-card-content>
+</mat-card>
